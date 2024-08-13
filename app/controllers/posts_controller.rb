@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate, only: [:create]
 
   def index
-    posts = Post.all
+    posts = Post.page(params[:page]).per(10)
     render json: posts
   end
 
